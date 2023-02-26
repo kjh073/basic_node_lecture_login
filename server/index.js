@@ -1,6 +1,6 @@
 const express = require('express') //express 모듈 가져옴
 const app = express() //함수를 이용해 새로운 app을 만듦
-const port = 3000 //3000번 포트를 백서버로 둠
+const port = 6000 //5000번 포트를 백서버로 둠
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const config = require('./config/key');
@@ -20,6 +20,10 @@ mongoose.connect(config.mongoURI, {
 	.catch(err => console.log(err))
 
 app.get('/', (req, res) => res.send('Hello World! 안녕하세요')) //'/'디렉토리에 오면 Hello World 출력
+
+app.get('/api/hello', (req, res) => {
+	res.send("안녕하세요~")
+})
 
 app.post('/api/user/register', (req, res) => {
 	//회원가입할 때 필요한 정보들을 client에서 가져오면 그것들을 DB에 넣어줌
@@ -91,4 +95,4 @@ app.get('/api/users/logout', auth, (req, res) => {
 	})
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`)) //3000번 포트에서 실행
+app.listen(port, () => console.log(`Example app listening on port ${port}!`)) //5000번 포트에서 실행
