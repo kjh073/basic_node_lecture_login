@@ -47,6 +47,9 @@ function RegisterPage(props) {
 		dispatch(registerUser(body))
 			.then(response => {
 				if(response.payload.success) {
+					console.log('email', Email)
+				console.log('password', Password)
+				console.log('name', Name)
 					navigate('/login') //페이지 이동
 				} else {
 					alert('failed to sign up')
