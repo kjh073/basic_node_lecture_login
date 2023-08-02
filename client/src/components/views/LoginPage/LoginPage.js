@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 function LoginPage(props) {
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
+	const params = useParams();
+	const location = useLocation();
+	// const navigate = useNavigate();
 
 	const [Email, setEmail] = useState("") //서버에 보내고자하는 값들을 state에서 받음
 	const [Password, setPassword] = useState("")

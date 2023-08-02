@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
+
 
 function LandingPage() {
+	const params = useParams();
+	const location = useLocation();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 	  axios.get('/api/hello')
 	  .then(response=> { console.log(response.data) })
 
 	}, [])
-	let navigate = useNavigate();
+	// let navigate = useNavigate();
 
 	const onClickHandler = () => {
 		axios.get('/api/users/logout')

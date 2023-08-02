@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
+
 
 function RegisterPage(props) {
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
+	const params = useParams();
+	const location = useLocation();
+	// const navigate = useNavigate();
 
 	const [Email, setEmail] = useState("") //서버에 보내고자하는 값들을 state에서 받음
 	const [Password, setPassword] = useState("")
@@ -48,8 +53,8 @@ function RegisterPage(props) {
 			.then(response => {
 				if(response.payload.success) {
 					console.log('email', Email)
-				console.log('password', Password)
-				console.log('name', Name)
+					console.log('password', Password)
+					console.log('name', Name)
 					navigate('/login') //페이지 이동
 				} else {
 					alert('failed to sign up')

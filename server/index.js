@@ -1,6 +1,6 @@
 const express = require('express') //express 모듈 가져옴
 const app = express() //함수를 이용해 새로운 app을 만듦
-const port = 6000 //5000번 포트를 백서버로 둠
+const port = 6000 //6000번 포트를 백서버로 둠
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const config = require('./config/key');
@@ -67,8 +67,6 @@ app.post('/api/user/login', (req, res) => {
 
 //role 0 => 일반 유저 0이 아니면 관리자
 app.get('/api/user/auth', auth, (req, res) => { //end point에서 리퀘스트를 받은 다음 cb function을 하기 전에 중간에서 무언가를 해주는 것이 middleware
-	req.user
-	req.token 
 	//(req, res)에 왔다는건 middleware를 성공적으로 통과했다는 얘기
 	//false라면 return에서 다른 곳으로 빠져나감
 	//여기까지 미들웨어를 통과했다는건 authentication: true
